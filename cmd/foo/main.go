@@ -8,7 +8,7 @@ import (
 
 func main() {
 	osutil.ExitIfError(
-		osutil.CancelOnInterruptOrTerminate(nil))
+		logic(osutil.CancelOnInterruptOrTerminate(nil)))
 }
 
 func logic(ctx context.Context)error{
