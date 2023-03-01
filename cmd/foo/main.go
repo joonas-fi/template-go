@@ -2,8 +2,10 @@ package main
 
 import (
 	"context"
+	"log"
 	"os"
 
+	"github.com/function61/gokit/app/cli"
 	"github.com/function61/gokit/app/dynversion"
 	"github.com/function61/gokit/os/osutil"
 	"github.com/spf13/cobra"
@@ -20,10 +22,10 @@ func main() {
 		Use: "reticulate-splines",
 		// Short: "Reticulates splines",
 		Args: cobra.NoArgs,
-		Run: func(_ *cobra.Command, args []string) {
-			osutil.ExitIfError(
-				logic(osutil.CancelOnInterruptOrTerminate(nil)))
-		},
+		Run: cli.RunnerNoArgs(func(ctx context.Context, _ *log.Logger) error {
+			<-ctx.Done()
+			return nil
+		}),
 	})
 
 	osutil.ExitIfError(app.Execute())
