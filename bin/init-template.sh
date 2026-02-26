@@ -4,7 +4,7 @@ id="$1"
 
 mv cmd/foo "cmd/$id"
 
-sed -i "s/foo/$id/g" turbobob.json
+sed -i "s/foo/$id/g" .config/turbobob.json
 
 sed -i "s/template-go/$id/g" go.mod
 
